@@ -33,8 +33,12 @@ $LDFLAGS = ldflags
 core_lib = ldflags.match(/-l(MagickCore(-Q\d\d)?)/)[1]
 plus_lib = ldflags.match(/-l(Magick\+\+(-Q\d\d)?)/)[1]
 
-unless have_library(core_lib, "InitializeMagick", headers) && have_library(plus_lib, "InitializeMagick", headers)
-  exit_failure "Can't find the ImageMagick library (#{lib}) or one of the dependent libraries. " +
+unless have_library(core_lib, "InitializeMagick", headers)
+  exit_failure "Can't find the ImageMagick library (#{core_lib}) or one of the dependent libraries. " +
+        "Check the mkmf.log file for more detailed information.\n"
+end
+unless have_library(plus_lib, "InitializeMagick", headers)
+  exit_failure "Can't find the ImageMagick library (#{plus_lib}) or one of the dependent libraries. " +
         "Check the mkmf.log file for more detailed information.\n"
 end
 
