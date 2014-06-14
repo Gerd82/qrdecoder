@@ -25,8 +25,8 @@ end
 
 ldflags = ENV["LDFLAGS"] || $LDFLAGS
 
-ldflags << " " + `Magick-config --ldflags`.chomp
-ldflags << " " + `Magick++-config --ldflags`.chomp
+ldflags << " " + `Magick-config --libs`.chomp
+ldflags << " " + `Magick++-config --libs`.chomp
 
 $LDFLAGS = ldflags
 
